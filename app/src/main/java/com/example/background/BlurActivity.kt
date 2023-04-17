@@ -45,7 +45,10 @@ class BlurActivity : AppCompatActivity() {
             }
         }
     }
-
+    internal fun cancelWork() {
+        workManager.cancelUniqueWork(IMAGE_MANIPULATION_WORK_NAME)
+        binding.cancelButton.setOnClickListener { viewModel.cancelWork() }
+    }
     private fun workInfosObserver(): Observer<List<WorkInfo>> {
         return Observer { listOfWorkInfo ->
 
